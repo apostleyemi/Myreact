@@ -4,50 +4,37 @@ import './index.css';
 
 
 
-/* method two using react  */
+var  DisplayEmployeeInfo=(employee)=>
+{ return <div>
+  <h1>Employee Information</h1>
+      <p>
+      <label>  Employee ID: <b>{employee.Id}</b></label>
+      </p>
 
-/* const element=React.createElement("h1", null,"React Elelment Creation Method two");
+      <p>
+      <label>  Employee Name: <b>{employee.Name}</b></label>
+      </p>
 
-ReactDOM.render(element,document.getElementById("root")); */
+        <p>
+        <label>  Employee Gender: <b>{employee.gender}</b></label>
+        </p>
 
-const element=React.createElement("div",{className:"testClass"},
-React.createElement("h1",null,"Welcome to React Tectspace Tutorial"),
-React.createElement("P",null,"This tutorial is designed for people who prefer to learn by doing If you prefer learning concepts from the ground up"));
+        <p>
+        <label>  Employee Phone: <b>{employee.Phone}</b></label>
+        </p>
+        <Department deptName={employee.deptName} headName={employee.headName}></Department>
+       </div>;
 
-ReactDOM.render(element,document.getElementById("root"));
+      
+}
 
-/* method one jss */
+const Department=(deptInfo)=>{
+  return <div><p>Dept Name is: <b>{deptInfo.deptName}</b></p>
+  <p>Dept Head is: <b>{deptInfo.headName}</b></p>
 
-/* const element=<h1 className="testClass">Welcome to React Tutorial by Techspace</h1>;
-
-
-ReactDOM.render(element,document.getElementById("root"));
-
-const paraElement=<h1 className="testClass">This is the first paragraph in the project , trying to understand multiple element creation</h1>;
-
-
-ReactDOM.render(paraElement,document.getElementById("para")); */
-
-/* const element=
-<div className="testClass">
-<h1 >Welcome to React Tutorial by Techspace</h1>
-<p>
-This tutorial is designed for people who prefer to learn by doing.
- If you prefer learning concepts from the ground up,
- check out our step-by-step guide. You might find this
-  tutorial and the guide complementary to each othe
-  This tutorial is designed for people who prefer to learn by doing.
- If you prefer learning concepts from the ground up,
- check out our step-by-step guide. You might find this
-  tutorial and the guide complementary to each othe
-  This tutorial is designed for people who prefer to learn by doing.
- If you prefer learning concepts from the ground up,
- check out our step-by-step guide. You might find this
-  tutorial and the guide complementary to each othe
-</p>
-</div>; */
-
-
-
+  </div>
+}
+const element=<DisplayEmployeeInfo Id="0001" Name="Joy Apata" gender="Male" Phone="08067013148" deptName="Software Unit"
+ headName="ICT"></DisplayEmployeeInfo>
 
 ReactDOM.render(element,document.getElementById("root"));
