@@ -3,82 +3,69 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 
-/*  class tutorial */
+class CountCharacters extends React.Component{
+ constructor(props)
+ {
+   super(props);
+   this.state={
+     message:'',
+     counter:10
+   };
+ }
+ onMessageChange(text)
+ {
+     this.setState({
+         message:'message has  '+ text.length+ '  number of characters',
+        
+       });
+ }
+render()
+{
+   return <div>
+
+     <h1>Welcome to Character Counter </h1>
+
+     <p>
+       <label>Enter Text Here : <input type="text" onChange={
+         e=>this.onMessageChange(e.target.value)
+       } ></input></label>
+     </p>
+     <p>
+       <label>{this.state.message}</label>
+     </p>
+     <p>
+       <label>{this.state.counter}</label>
+     </p>
+   </div>
+}
+
+
+
+}
 class Employee extends React.Component{
+  state={counter:0};
+    addEmployee=()=>{
+      this.setState({counter:this.state.counter+1})
+     /*  this.counter=this.counter+1; */
+        /*  alert("Praise God Employee Exists");
+         alert("you have clicked "+this.counter+"times"); */
+    }
 
-  render()
-  {
-      return <div>
-        <h1>Employee Infomation</h1>
-        <p>Employeen ID : {this.props.Id}</p>
-        <p>Employeen Name : {this.props.Name}</p>
-        <p>Employeen Gender : {this.props.Gender}</p>
-        <p>Employeen Phone : {this.props.Phone}</p>
+ render(){
+        return <div>
+           <h1>Manage Employee</h1>
+           <p>
+             <button onClick={this.addEmployee}  >Add Employee</button>
+           </p>
+           <p>
+             <label>Employee button in clicked<b>{this.state.counter}</b> times</label>
+           </p>
 
-<Department deptName={this.props.deptName} deptHead={this.props.deptHead}></Department>
-      </div>
-  }
-}
-
-
-class Department extends React.Component{
-render(){
-
-  return <div>
-    <h2> Department Details</h2>
-    <p>
-      <label> Department Name is : {this.props.deptName}</label>
-    </p>
-    <p>
-      <label> Department Head is : {this.props.deptHead}</label>
-    </p>
-  </div>
+        </div>
+      }
 
 }
 
-
-}
-
-  
-  const element=<Employee Id="0002" Name="Akinola Abayomi" Gender="Male" Phone="08067013148" deptName="Software Unit" deptHead="ICT"></Employee>
-
-
+const element=<CountCharacters></CountCharacters>
 ReactDOM.render(element,document.getElementById("root"));
 
-
-/* 
-var  DisplayEmployeeInfo=(employee)=>
-{ return <div>
-  <h1>Employee Information</h1>
-      <p>
-      <label>  Employee ID: <b>{employee.Id}</b></label>
-      </p>
-
-      <p>
-      <label>  Employee Name: <b>{employee.Name}</b></label>
-      </p>
-
-        <p>
-        <label>  Employee Gender: <b>{employee.gender}</b></label>
-        </p>
-
-        <p>
-        <label>  Employee Phone: <b>{employee.Phone}</b></label>
-        </p>
-        <Department deptName={employee.deptName} headName={employee.headName}></Department>
-       </div>;
-
-      
-}
-
-const Department=(deptInfo)=>{
-  return <div><p>Dept Name is: <b>{deptInfo.deptName}</b></p>
-  <p>Dept Head is: <b>{deptInfo.headName}</b></p>
-
-  </div>
-}
-const element=<DisplayEmployeeInfo Id="0001" Name="Joy Apata" gender="Male" Phone="08067013148" deptName="Software Unit"
- headName="ICT"></DisplayEmployeeInfo>
-
-ReactDOM.render(element,document.getElementById("root"));
- */
